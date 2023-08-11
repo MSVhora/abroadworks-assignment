@@ -36,3 +36,8 @@
     npm run dev
     ```
 
+### API Documentation
+
+You can find API documentation on Postman. Examples are provided for individual and all summary data.
+
+[Click here to check API Documentation!](https://documenter.getpostman.com/view/8197608/2s9Xy5KpmG)
