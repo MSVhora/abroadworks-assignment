@@ -1,9 +1,9 @@
-import isJSON from 'validator/lib/isJSON';
-import isLength from 'validator/lib/isLength';
-import isInt from 'validator/lib/isInt';
-import matches from 'validator/lib/matches';
-import isNumeric from 'validator/lib/isNumeric';
-import isIn from 'validator/lib/isIn';
+import isJSON from 'validator/lib/isJSON'
+import isLength from 'validator/lib/isLength'
+import isInt from 'validator/lib/isInt'
+import matches from 'validator/lib/matches'
+import isNumeric from 'validator/lib/isNumeric'
+import isIn from 'validator/lib/isIn'
 
 // Custom Validators
 import {
@@ -24,8 +24,8 @@ import {
    isValidConstant,
    isObject,
    isLatLong,
-   isValidPincode
-} from './custom-validator';
+   isValidPincode,
+} from './custom-validator'
 
 export {
    // Validations
@@ -53,5 +53,5 @@ export {
    isValidConstant,
    isObject,
    isLatLong,
-   isValidPincode
-};
+   isValidPincode,
+}

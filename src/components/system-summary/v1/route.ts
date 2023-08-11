@@ -1,8 +1,8 @@
-import { Request, Response, Router } from 'express';
-import validator from './validator';
-import controller from './controller';
+import { Request, Response, Router } from 'express'
+import validator from './validator'
+import controller from './controller'
 
-const router = Router();
+const router = Router()
 
 /**
  * System Summary API
@@ -14,7 +14,7 @@ const router = Router();
  *
  */
 router.get('/', validator.systemSummary, (req: Request, res: Response) => {
-   controller.systemSummary(req, res);
-});
+   controller.systemSummary(req, res)
+})
 
-export default router;
+export default router

@@ -1,4 +1,2 @@
-declare namespace GlobalTypes {
-   
-}
-export = GlobalTypes;
+declare namespace GlobalTypes {}
+export = GlobalTypes
