@@ -10,8 +10,12 @@ class SystemSummaryValidator {
     * @param next
     */
    public static systemSummary(req: Request, res: Response, next: NextFunction) {
-      const { showHDDSummary, showMemorySummary, showProcessSummary, showProcessList } = req.query
+      const { showOSSummary, showHDDSummary, showMemorySummary, showProcessSummary, showProcessList } = req.query
       const errors: any = {}
+
+      if (!isEmpty(showOSSummary) && !isBoolean(showOSSummary)) {
+         errors.showOSSummary = req.__('SYSTEM_SUMMARY.VALIDATIONS.showOSSummary.mustBoolean')
+      }
 
       if (!isEmpty(showHDDSummary) && !isBoolean(showHDDSummary)) {
          errors.showHDDSummary = req.__('SYSTEM_SUMMARY.VALIDATIONS.showHDDSummary.mustBoolean')

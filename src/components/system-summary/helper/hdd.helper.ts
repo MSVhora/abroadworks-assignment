@@ -3,7 +3,7 @@ import { convertBytesToMB, roundNumber } from '../../../utils/helper'
 import { Disk, Drive, DriveDetail } from '../types'
 
 class HDDHelper {
-   public async getHDDSummary() {
+   public async getHDDSummary(): Promise<Disk[]> {
       const hddDisks: Disk[] = await Systeminformation.diskLayout()
       const hddDrives: Drive[] = await Systeminformation.blockDevices()
       const driveDetails: DriveDetail[] = await Systeminformation.fsSize()

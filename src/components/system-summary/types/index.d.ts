@@ -60,5 +60,25 @@ declare namespace SystemSummary {
       mount: string
       rw: boolean | null
    }
+
+   export interface MemoryData {
+      total: number
+      free: number
+      used: number
+      active: number
+      available: number
+      buffcache: number
+      buffers: number
+      cached: number
+      slab: number
+      swaptotal: number
+      swapused: number
+      swapfree: number
+      totalMemoryInMB?: number
+      freeMemoryInMB?: number
+      usedMemoryInMB?: number
+      freeMemoryPercentage?: number
+      usedMemoryPercentage?: number
+   }
 }
 export = SystemSummary

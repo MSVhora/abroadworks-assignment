@@ -3,6 +3,7 @@ import { createResponse } from '../../../utils/helper'
 import { logger } from '../../../utils/logger'
 import HTTP_STATUS_CODES from 'http-status-codes'
 import { HddSummaryModel } from '../model'
+import { MemoryHelper, OSHelper, ProcessHelper, ServiceHelper } from '../helper'
 
 class SystemSummaryController {
    /**
@@ -11,12 +12,33 @@ class SystemSummaryController {
     * @param res
     */
    public static async systemSummary(req: Request, res: Response) {
-      // showMemorySummary, showProcessSummary, showProcessList
-      const { showHDDSummary } = req.query
+      const { showOSSummary, showHDDSummary, showMemorySummary, showProcessSummary, showServiceSummary } = req.query
       try {
          const response: any = {}
+
+         // Check for OS Info
+         if (showOSSummary?.toString().toLowerCase() == 'true') {
+            response.osSummary = await OSHelper.getOSSummary()
+         }
+
+         // Check for Hdd Summary
          if (showHDDSummary?.toString().toLowerCase() == 'true') {
             response.hddSummary = await HddSummaryModel.getLatest()
+         }
+
+         // Check for Memory Summary
+         if (showMemorySummary?.toString().toLowerCase() == 'true') {
+            response.memorySummary = await MemoryHelper.getMemorySummary()
+         }
+
+         // Check for Current Running Processes
+         if (showProcessSummary?.toString().toLowerCase() == 'true') {
+            response.processSummary = await ProcessHelper.getProcessSummary()
+         }
+
+         // Check for Current Running Services
+         if (showServiceSummary?.toString().toLowerCase() == 'true') {
+            response.serviceSummary = await ServiceHelper.getServiceSummary()
          }
 
          createResponse(res, HTTP_STATUS_CODES.OK, req.__('SYSTEM_SUMMARY.SUCCESS'), response)
