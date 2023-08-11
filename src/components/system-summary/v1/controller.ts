@@ -12,10 +12,10 @@ class SystemSummaryController {
     */
    public static async systemSummary(req: Request, res: Response) {
       // showMemorySummary, showProcessSummary, showProcessList
-      const { showHDDSummary, } = req.query;
+      const { showHDDSummary } = req.query;
       try {
          const response: any = {}
-         if (showHDDSummary) {
+         if (showHDDSummary?.toString().toLowerCase() == "true") {
             response.hddSummary = await HDDHelper.getHDDSummary()
          }
 

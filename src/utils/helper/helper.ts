@@ -111,3 +111,7 @@ export const convertBytesToMB = (bytes: number): number => {
 export const convertBytesToGB = (bytes: number): number => {
     return Math.round(bytes / 1024 / 1024 / 1024)
 }
+
+export const roundNumber = (value: number, decimals: number): number => {
+    return parseFloat(value.toFixed(decimals))
+}
