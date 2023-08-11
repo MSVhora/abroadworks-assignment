@@ -1,1 +1,11 @@
-{}
+{
+	"SYSTEM_SUMMARY": {
+		"SUCCESS": "SYSTEM_SUMMARY.SUCCESS",
+		"VALIDATIONS": {
+			"showHDDSummary": {
+				"mustBoolean": "SYSTEM_SUMMARY.VALIDATIONS.showHDDSummary.mustBoolean"
+			}
+		}
+	},
+	"SERVER_ERROR_MESSAGE": "SERVER_ERROR_MESSAGE"
+}

@@ -162,7 +162,7 @@ export const isFloatNumber = (value: any) => {
  * @param {*} value // Accepts string
  */
 export const isBoolean = (value: any) => {
-   if (typeof value === 'boolean') {
+   if (typeof value === 'boolean' || value.toString().toLowerCase() === "true" || value.toString().toLowerCase() === "false") {
       return true;
    } else {
       return false;

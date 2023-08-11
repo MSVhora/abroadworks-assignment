@@ -27,6 +27,19 @@ export const createResponse = (
     });
 };
 
+
+/**
+ * @description Send Validation Response
+ * @param {errors} errors - Errors Object
+ * @param {Object} res
+ */
+export const createValidationResponse = async (res: Response, errors: any) => {
+    // logger.error(__filename, 'validations', '', 'validation errors', errors);
+    return createResponse(res, HTTP_STATUS_CODE.UNPROCESSABLE_ENTITY, errors[Object.keys(errors)[0]], {
+        error: errors
+    });
+};
+
 /**
  * decode JWT token
  * @param JWT token
@@ -86,3 +99,15 @@ export const validateJWTToken = (req: Request, res: Response, next: NextFunction
         return;
     }
 };
+
+export const convertBytesToKB = (bytes: number): number => {
+    return Math.round(bytes / 1024)
+}
+
+export const convertBytesToMB = (bytes: number): number => {
+    return Math.round(bytes / 1024 / 1024)
+}
+
+export const convertBytesToGB = (bytes: number): number => {
+    return Math.round(bytes / 1024 / 1024 / 1024)
+}
