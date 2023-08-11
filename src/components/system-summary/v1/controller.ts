@@ -5,6 +5,7 @@ import HTTP_STATUS_CODES from 'http-status-codes'
 import { HddSummaryModel } from '../model'
 import { HddHelper, MemoryHelper, OSHelper, ProcessHelper, ServiceHelper } from '../helper'
 import { isEmpty } from '../../../utils/validator'
+import { getUTCTime } from '../../../utils/time'
 
 class SystemSummaryController {
    /**
@@ -15,7 +16,9 @@ class SystemSummaryController {
    public static async systemSummary(req: Request, res: Response) {
       const { showOSSummary, showHDDSummary, showMemorySummary, showProcessSummary, showServiceSummary } = req.query
       try {
-         const response: any = {}
+         const response: any = {
+            timestamp: getUTCTime()
+         }
 
          // Check for OS Info
          if (showOSSummary?.toString().toLowerCase() == 'true') {
