@@ -2,4 +2,4 @@
  
 ## Assignment
 
-![Assignment](assignement.png)
+![Assignment](assignment.png)
