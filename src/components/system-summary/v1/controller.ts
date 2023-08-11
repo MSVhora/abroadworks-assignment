@@ -3,7 +3,8 @@ import { createResponse } from '../../../utils/helper'
 import { logger } from '../../../utils/logger'
 import HTTP_STATUS_CODES from 'http-status-codes'
 import { HddSummaryModel } from '../model'
-import { MemoryHelper, OSHelper, ProcessHelper, ServiceHelper } from '../helper'
+import { HddHelper, MemoryHelper, OSHelper, ProcessHelper, ServiceHelper } from '../helper'
+import { isEmpty } from '../../../utils/validator'
 
 class SystemSummaryController {
    /**
@@ -23,7 +24,11 @@ class SystemSummaryController {
 
          // Check for Hdd Summary
          if (showHDDSummary?.toString().toLowerCase() == 'true') {
-            response.hddSummary = await HddSummaryModel.getLatest()
+            let hddSummary: any = await HddSummaryModel.getLatest()
+            if (isEmpty(hddSummary)) {
+               hddSummary = await HddHelper.updateAndFetchHddSummary()
+            }
+            response.hddSummary = hddSummary
          }
 
          // Check for Memory Summary

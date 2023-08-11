@@ -1,9 +1,16 @@
 import * as Systeminformation from 'systeminformation'
 import { convertBytesToMB, roundNumber } from '../../../utils/helper'
 import { Disk, Drive, DriveDetail } from '../types'
+import { HddSummaryModel } from '../model'
 
 class HDDHelper {
-   public async getHDDSummary(): Promise<Disk[]> {
+   public async updateAndFetchHddSummary(): Promise<Disk[]> {
+      const hddSummary = await this.getHDDSummary()
+      await HddSummaryModel.addOne(hddSummary)
+      return hddSummary
+   }
+
+   private async getHDDSummary(): Promise<Disk[]> {
       const hddDisks: Disk[] = await Systeminformation.diskLayout()
       const hddDrives: Drive[] = await Systeminformation.blockDevices()
       const driveDetails: DriveDetail[] = await Systeminformation.fsSize()

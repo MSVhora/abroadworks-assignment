@@ -7,6 +7,7 @@ config({ path: resolve(__dirname, '../.env') })
 import app from './app'
 import { logger } from './utils/logger'
 import mongooseDb from './utils/dbconfig/db.config'
+import { initHddSummaryCronJob } from './crons'
 
 const server = createServer(app)
 const port: number = Number(process.env.PORT) || 3000
@@ -21,6 +22,7 @@ const port: number = Number(process.env.PORT) || 3000
       })
 
       // Cron job functions
+      initHddSummaryCronJob()
    } catch (e) {
       logger.error(__filename, '', '', `Unable to connect to the server`, e)
       process.exit(1)
