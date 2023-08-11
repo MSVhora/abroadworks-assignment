@@ -1,0 +1,26 @@
+import express, { Request, Response } from 'express';
+import { logger } from './utils/logger';
+import middlewares from './middlewares';
+import { v1Routes } from './routes';
+
+const app: express.Application = express();
+
+middlewares(app); // bind middlewares
+
+v1Routes(app); // initialize all v1 routes
+
+// Base route to health check
+app.get('/test', (_req: Request, res: Response) => {
+   return res.status(200).send('Test successful');
+});
+
+// Handle invalid Route
+app.all('/*', (req: Request, res: Response) => {
+   logger.info(__filename, 'Invalid Route Handler', 'No UUID', 'Invalid Route Fired : ' + req.path);
+   return res.status(400).json({
+      status: 400,
+      message: 'Bad Request'
+   });
+});
+
+export default app;

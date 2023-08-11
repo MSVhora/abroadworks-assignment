@@ -1,0 +1,5 @@
+# Ignore locales
+locales/
+logs/
+dist/
+node_modules/
