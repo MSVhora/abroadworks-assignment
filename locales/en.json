@@ -1,11 +1,26 @@
 {
+	"INVALID_ACCESS_TOKEN": "Invalid access token!",
+	"SERVER_ERROR_MESSAGE": "Internal Server Error.",
+	"SERVICE_UNAVAILABLE": "Service is unavailable. Please try after some time!",
+	"JWT_DECODE_ERROR": "Error during JWT decode.",
 	"SYSTEM_SUMMARY": {
-		"SUCCESS": "SYSTEM_SUMMARY.SUCCESS",
+		"SUCCESS": "System Summary fetched successfully.",
 		"VALIDATIONS": {
+			"showOSSummary": {
+				"mustBoolean": "showOSSummary field must be a boolean value."
+			},
 			"showHDDSummary": {
-				"mustBoolean": "SYSTEM_SUMMARY.VALIDATIONS.showHDDSummary.mustBoolean"
+				"mustBoolean": "showHDDSummary field must be a boolean value."
+			},
+			"showMemorySummary": {
+				"mustBoolean": "showMemorySummary field must be a boolean value."
+			},
+			"showProcessSummary": {
+				"mustBoolean": "showProcessSummary field must be a boolean value."
+			},
+			"showProcessList": {
+				"mustBoolean": "showProcessList field must be a boolean value."
 			}
 		}
-	},
-	"SERVER_ERROR_MESSAGE": "SERVER_ERROR_MESSAGE"
+	}
 }
